@@ -12,7 +12,7 @@ drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
 cap = cv2.VideoCapture(0)
 
 # DETECT THE FACE LANDMARKS
-with mp_face_mesh.FaceMesh(min_detection_confidence=0.5, min_tracking_confidence=0.5) as face_mesh:
+with mp_face_mesh.FaceMesh(min_detection_confidence=0.7, min_tracking_confidence=0.7) as face_mesh:
   while True:
     success, image = cap.read()
 
@@ -101,7 +101,7 @@ with mp_face_mesh.FaceMesh(min_detection_confidence=0.5, min_tracking_confidence
             .get_default_face_mesh_tesselation_style())
 
     # Display the image
-    cv2.imshow('MediaPipe FaceMesh', image)
+    cv2.imshow('Driver alertness project', image)
     
     # Terminate the process
     if cv2.waitKey(5) & 0xFF == 27:
