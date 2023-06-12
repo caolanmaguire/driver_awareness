@@ -88,6 +88,13 @@ with mp_face_mesh.FaceMesh(min_detection_confidence=0.7, min_tracking_confidence
         else:
             print('looking forward')
         
+        nose_3d_projection, jacobian = cv2.projectPoints(nose_3d, rot_vec, trans_vec, cam_matrix, dist_matrix)
+
+        p1 = (int(nose_2d[0]), int(nose_2d[1]))
+        p2 = (int(nose_2d[0] + y * 10), int(nose_2d[1] - x * 10))
+
+        cv2.line(image, p1, p2, (255,0,0), 3)
+        
         # print(f'results.multi_face_landmarks = ',results.multi_face_landmarks)
         # print(f'results = ',results)
         # print('\n - - - - - - - - - \n')
