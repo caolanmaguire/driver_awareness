@@ -9,8 +9,8 @@ project developed for analysing the mode of travel of a forklift vehicle and to 
 ## Technologies
 Project is created with:
 * Python 3.7
-	* turtle
-	* winsound
+	* mediapipe
+	* opencv
 	* numpy
 	
 ## Setup
