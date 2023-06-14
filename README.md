@@ -27,3 +27,5 @@ $ python snake_game.py
 
 
 ## References
+* to read
+* https://www.youtube.com/watch?v=We1uB79Ci-w
