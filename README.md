@@ -15,14 +15,15 @@ Project is created with:
 	
 ## Setup
 To run this project, install it locally :
+connect two cameras to your pc - your built in camera (if you have one) will be your first camera
 ```
-gh repo clone calsickofthis/snake_game
+gh repo clone calsickofthis/driver_awareness
 ```
 
 ```
-$ cd snake_game
+$ cd driver_awareness
 $ pip install -r requirements.txt
-$ python snake_game.py
+$ python main.py
 ```
 
 
