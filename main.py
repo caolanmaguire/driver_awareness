@@ -1,12 +1,6 @@
-import cv2
 import threading
-
-to_run = 'face_pose'
-# IMPORTING LIBRARIES
 import cv2
-import time
 import mediapipe as mp
-import numpy as np
 import hand_pose_estimation
 import face_pose_estimation
 
