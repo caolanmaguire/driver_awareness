@@ -18,23 +18,6 @@ class camThread(threading.Thread):
     def run(self):
         print("Starting " + self.previewName)
         run_instance(self.previewName, self.camID)
-        # camPreview(self.previewName, self.camID)
-
-# def camPreview(previewName, camID):
-#     cv2.namedWindow(previewName)
-#     cam = cv2.VideoCapture(camID)
-#     if cam.isOpened():  # try to get the first frame
-#         rval, frame = cam.read()
-#     else:
-#         rval = False
-
-#     while rval:
-#         cv2.imshow(previewName, frame)
-#         rval, frame = cam.read()
-#         key = cv2.waitKey(20)
-#         if key == 27:  # exit on ESC
-#             break
-#     cv2.destroyWindow(previewName)
 
 def run_instance(to_run, camID):
     if to_run == 'face_pose':
