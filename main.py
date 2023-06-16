@@ -28,8 +28,7 @@ def run_instance(to_run, camID):
         cap.release()
         cv2.destroyAllWindows()
     elif to_run == 'hand_pose':
-        # Grabbing the Holistic Model from Mediapipe and
-        # Initializing the Model
+        # Grabbing the Holistic Model from Mediapipe and Initializing the Model
         mp_holistic = mp.solutions.holistic
         holistic_model = mp_holistic.Holistic(
             min_detection_confidence=0.5,
