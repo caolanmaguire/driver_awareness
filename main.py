@@ -1,12 +1,6 @@
-import cv2
 import threading
-
-to_run = 'face_pose'
-# IMPORTING LIBRARIES
 import cv2
-import time
 import mediapipe as mp
-import numpy as np
 import hand_pose_estimation
 import face_pose_estimation
 
@@ -18,23 +12,6 @@ class camThread(threading.Thread):
     def run(self):
         print("Starting " + self.previewName)
         run_instance(self.previewName, self.camID)
-        # camPreview(self.previewName, self.camID)
-
-# def camPreview(previewName, camID):
-#     cv2.namedWindow(previewName)
-#     cam = cv2.VideoCapture(camID)
-#     if cam.isOpened():  # try to get the first frame
-#         rval, frame = cam.read()
-#     else:
-#         rval = False
-
-#     while rval:
-#         cv2.imshow(previewName, frame)
-#         rval, frame = cam.read()
-#         key = cv2.waitKey(20)
-#         if key == 27:  # exit on ESC
-#             break
-#     cv2.destroyWindow(previewName)
 
 def run_instance(to_run, camID):
     if to_run == 'face_pose':
@@ -51,8 +28,7 @@ def run_instance(to_run, camID):
         cap.release()
         cv2.destroyAllWindows()
     elif to_run == 'hand_pose':
-        # Grabbing the Holistic Model from Mediapipe and
-        # Initializing the Model
+        # Grabbing the Holistic Model from Mediapipe and Initializing the Model
         mp_holistic = mp.solutions.holistic
         holistic_model = mp_holistic.Holistic(
             min_detection_confidence=0.5,

@@ -3,7 +3,7 @@ import cv2
 import mediapipe as mp
 import numpy as np
 
-def face_post_analysis(mp_face_mesh,cap,mp_drawing, mp_drawing_styles):
+def face_post_analysis(mp_face_mesh,cap,mp_drawing, mp_drawing_styles) -> None:
     # DETECT THE FACE LANDMARKS
     with mp_face_mesh.FaceMesh(min_detection_confidence=0.7, min_tracking_confidence=0.7) as face_mesh:
         while True:
@@ -69,7 +69,6 @@ def face_post_analysis(mp_face_mesh,cap,mp_drawing, mp_drawing_styles):
                     y = angles[1] * 360
                     z = angles[2] * 360
 
-
                     if y < -10:
                         print('looking left')
                     elif y > 10:
@@ -85,13 +84,7 @@ def face_post_analysis(mp_face_mesh,cap,mp_drawing, mp_drawing_styles):
 
                     p1 = (int(nose_2d[0]), int(nose_2d[1]))
                     p2 = (int(nose_2d[0] + y * 10), int(nose_2d[1] - x * 10))
-
                     cv2.line(image, p1, p2, (255,0,0), 3)
-                    
-                    # print(f'results.multi_face_landmarks = ',results.multi_face_landmarks)
-                    # print(f'results = ',results)
-                    # print('\n - - - - - - - - - \n')
-                    
                     mp_drawing.draw_landmarks(
                         image=image,
                         landmark_list=face_landmarks,
@@ -102,7 +95,6 @@ def face_post_analysis(mp_face_mesh,cap,mp_drawing, mp_drawing_styles):
 
             # Display the image
             cv2.imshow('Driver alertness project', image)
-            
             # Terminate the process
             if cv2.waitKey(5) & 0xFF == 27:
                 break
