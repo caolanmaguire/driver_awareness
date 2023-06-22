@@ -78,7 +78,7 @@ def run_instance(to_run, camID):
         cv2.destroyAllWindows()
 
 # Create two threads as follows
-thread1 = camThread("face_pose", 1)
-thread2 = camThread("hand_pose", 0)
+thread1 = camThread("face_pose", 0)
+thread2 = camThread("hand_pose", 1)
 thread1.start()
 thread2.start()
