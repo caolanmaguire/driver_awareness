@@ -3,6 +3,14 @@ import mediapipe as mp
 import time
 
 def hand_pose_prediction(mp_drawing,mp_holistic,holistic_model,capture) -> None:
+    """function for running hand pose function from mediapipe
+
+    Args:
+        mp_drawing ([type]): [description]
+        mp_holistic ([type]): [description]
+        holistic_model ([type]): [description]
+        capture ([type]): [description]
+    """    
     while capture.isOpened():
         # capture frame by frame
         ret, frame = capture.read()
