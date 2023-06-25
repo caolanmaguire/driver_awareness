@@ -1,14 +1,16 @@
 import cv2
 import mediapipe as mp
+import time
 
 def hand_pose_prediction(mp_drawing,mp_holistic,holistic_model,capture) -> None:
-    
     while capture.isOpened():
         # capture frame by frame
-        frame = capture.read()
+        ret, frame = capture.read()
+
+        print(f'frame : ',frame)
 
         # resizing the frame for better view
-        frame = cv2.resize(frame, (800, 600))
+        # frame = cv2.resize(frame, (800, 600))
 
         # Converting the from BGR to RGB
         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -38,8 +40,8 @@ def hand_pose_prediction(mp_drawing,mp_holistic,holistic_model,capture) -> None:
         )
 
         # Display the resulting image
-        cv2.imshow("Facial and Hand Landmarks", image)
+        cv2.imshow("Hand Landmarks", image)
 
         # Enter key 'q' to break the loop
-        if cv2.waitKey(5) & 0xFF == ord('q'):
+        if cv2.waitKey(5) & 0xFF == 27:
             break

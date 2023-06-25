@@ -75,5 +75,5 @@ if __name__ == "__main__":
     mpu6050_init(i2c)
     
     while True:
-        #print(mpu6050_get_accel(i2c)) #Print Accelerometer values (X,Y,Z) 
-        print(mpu6050_get_gyro(i2c)) #Print Gyroscope values (X,Y,Z)
+        print(mpu6050_get_accel(i2c)) #Print Accelerometer values (X,Y,Z) 
+        #print(mpu6050_get_gyro(i2c)) #Print Gyroscope values (X,Y,Z)

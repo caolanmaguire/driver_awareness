@@ -1,3 +1,4 @@
+"""Main file - multi threading implemented to run multiple camera feeds at once"""
 import threading
 import cv2
 import mediapipe as mp
@@ -5,15 +6,15 @@ import hand_pose_estimation
 import face_pose_estimation
 
 class camThread(threading.Thread):
-    def __init__(self, previewName, camID):
+    def __init__(self, previewName, cam_id):
         threading.Thread.__init__(self)
         self.previewName = previewName
-        self.camID = camID
+        self.cam_id = cam_id
     def run(self):
         print("Starting " + self.previewName)
-        run_instance(self.previewName, self.camID)
+        run_instance(self.previewName, self.cam_id)
 
-def run_instance(to_run, camID):
+def run_instance(to_run, cam_id):
     if to_run == 'face_pose':
         # INITIALIZING OBJECTS
         mp_drawing = mp.solutions.drawing_utils
@@ -21,7 +22,7 @@ def run_instance(to_run, camID):
         mp_face_mesh = mp.solutions.face_mesh
 
         drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
-        cap = cv2.VideoCapture(camID)
+        cap = cv2.VideoCapture(cam_id)
 
         face_pose_estimation.face_post_analysis(mp_face_mesh,cap,mp_drawing, mp_drawing_styles)
 
@@ -39,21 +40,16 @@ def run_instance(to_run, camID):
         mp_drawing = mp.solutions.drawing_utils
 
         # (0) in VideoCapture is used to connect to your computer's default camera
-        capture = cv2.VideoCapture(camID)
-
-        # Initializing current time and precious time for calculating the FPS
-        previousTime = 0
-        currentTime = 0
+        capture = cv2.VideoCapture(cam_id)
 
         hand_pose_estimation.hand_pose_prediction(mp_drawing,mp_holistic,holistic_model,capture)
-
-
         # When all the process is done
         # Release the capture and destroy all windows
         capture.release()
         cv2.destroyAllWindows()
 
 # Create two threads as follows
+# tasks = input('1 for face pose, 2 for hand pose, 1,2 for both:\n')
 thread1 = camThread("face_pose", 0)
 thread2 = camThread("hand_pose", 1)
 thread1.start()
