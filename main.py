@@ -4,7 +4,7 @@ import cv2
 import mediapipe as mp
 import hand_pose_estimation
 import face_pose_estimation
-import logging
+# import logging
 
 class cam_thread(threading.Thread):
     def __init__(self, previewName, cam_id):
@@ -57,10 +57,11 @@ def run_instance(to_run, cam_id):
 # Create two threads as follows
 # tasks = input('1 for face pose, 2 for hand pose, 1,2 for both:\n')
 
-# logging.basicConfig(filename = 'report.log',level = logging.DEBUG,format = '%(asctime)s:%(levelname)s:%(name)s:%(message)s')
+# logging.basicConfig(filename = 'report.log',level = \
+# logging.DEBUG,format = '%(asctime)s:%(levelname)s:%(name)s:%(message)s')
 # logging.info('Info message')
 
 thread1 = cam_thread("face_pose", 0)
-thread2 = cam_thread("hand_pose", 1)
+# thread2 = cam_thread("hand_pose", 1)
 thread1.start()
-thread2.start()
+# thread2.start()
