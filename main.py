@@ -62,6 +62,6 @@ def run_instance(to_run, cam_id):
 # logging.info('Info message')
 
 thread1 = cam_thread("face_pose", 0)
-# thread2 = cam_thread("hand_pose", 1)
+thread2 = cam_thread("hand_pose", 1)
 thread1.start()
-# thread2.start()
+thread2.start()
